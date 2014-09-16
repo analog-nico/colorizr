@@ -10,6 +10,7 @@
         var r = document.createElement('link');
         r.setAttribute('rel', 'stylesheet');
         r.setAttribute('href', 'http://raw.githubusercontent.com/bgrins/spectrum/master/spectrum.css');
+        document.getElementsByTagName('head')[0].appendChild(r);
         var s = document.createElement('script');
         s.setAttribute('src','http://raw.githubusercontent.com/bgrins/spectrum/master/spectrum.js');
         document.getElementsByTagName('head')[0].appendChild(s);
