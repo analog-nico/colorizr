@@ -16,13 +16,17 @@
         'position': 'fixed',
         'bottom': '0',
         'z-index': '9999',
-        'box-sizing': 'border-box',
         'background-color': 'rgba(255, 255, 255, 0.9)',
         '-webkit-box-shadow': '0 0 6px -6px black',
         '-moz-box-shadow': '0 0 6px 0 black',
         'box-shadow': '0 0 6px 0 black',
         'padding': '2em',
-        'overflow': 'auto'
+        'overflow': 'auto',
+        // Resets
+        'border': '0',
+        'box-sizing': 'border-box',
+        'color': 'black',
+        'margin': '0'
     });
 
     panel.appendTo('body');
