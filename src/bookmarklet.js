@@ -21,7 +21,7 @@ function loadSpectrum() {
 
 function loadColorizr() {
     var s = document.createElement('script');
-    s.setAttribute('src','https://raw.githubusercontent.com/analog-nico/colorizr/master/src/index.js');
+    s.setAttribute('src','https://raw.githubusercontent.com/analog-nico/colorizr/master/src/colorizr.js');
     head.appendChild(s);
 }
 
