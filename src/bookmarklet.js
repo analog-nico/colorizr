@@ -23,14 +23,14 @@
         document.getElementsByTagName('head')[0].appendChild(s);
     }
 
-    if (jQuery === undefined) {
+    if (window.jQuery === undefined) {
         loadJQuery();
         loadSpectrum();
         loadColorizr();
-    } else if (jQuery.fn.spectrum === undefined) {
+    } else if (window.jQuery.fn.spectrum === undefined) {
         loadSpectrum();
         loadColorizr();
-    } else if (jQuery('.colorizr').length === 0) {
+    } else if (window.jQuery('.colorizr').length === 0) {
         loadColorizr();
     }
 
