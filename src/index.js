@@ -33,12 +33,19 @@
         '<input type="text" class="target"/>' +
         '<input type="text" class="attr" value="style"/>' +
         '<input type="text" class="cssattr"/>' +
-        '<button>Test</button>' +
+        '<button>Apply</button>' +
     '</div>';
 
     function buttonClickHandler () {
+
         var widget = $(this).parent();
-        widget.find('.colorpicker').remove();
+
+        var oldColorpicker = widget.find('.colorpicker')
+        if (oldColorpicker.length > 0) {
+            oldColorpicker.spectrum('destroy');
+            oldColorpicker.remove();
+        }
+
         var target = widget.find('.target').val();
         var attr = widget.find('.attr').val();
         var cssattr = widget.find('.cssattr').val();
@@ -46,35 +53,28 @@
         colorpicker.appendTo(widget);
 
         function getColor() {
-            if (colorpicker.attr('data-cssattr') != null) {
-                return $(colorpicker.attr('data-target')).first().css(colorpicker.attr('data-cssattr'));
-            } else if (colorpicker.attr('data-attr') != null) {
-                return $(colorpicker.attr('data-target')).first().attr(colorpicker.attr('data-attr'));
+            if (cssattr !== '') {
+                return $(target).first().css(cssattr);
+            } else if (attr !== '') {
+                return $(target).first().attr(attr);
             }
-            return "";
+            return '';
         }
 
         function setColor(color) {
-            if (colorpicker.attr('data-cssattr') != null) {
-                $(colorpicker.attr('data-target')).css(colorpicker.attr('data-cssattr'), color);
-            } else if (colorpicker.attr('data-attr') != null) {
-                $(colorpicker.attr('data-target')).attr(colorpicker.attr('data-attr'), color);
+            // $(target) is not cached since page might dynamically create new matching elements.
+            if (cssattr !== '') {
+                $(target).css(cssattr, color);
+            } else if (attr !== '') {
+                $(target).attr(attr, color);
             }
         }
 
         colorpicker.spectrum({
             color: getColor(),
             showInput: true,
-            className: "full-spectrum",
-            showInitial: true,
+            showAlpha: true,
             showPalette: true,
-            showSelectionPalette: true,
-            maxPaletteSize: 10,
-            preferredFormat: "hex",
-            localStorageKey: "spectrum.demo",
-            move: setColor,
-            hide: setColor,
-            change: setColor,
             palette: [
                 ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
                 ["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"],
@@ -83,7 +83,15 @@
                 ["rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)", "rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)"],
                 ["rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)", "rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)"],
                 ["rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)", "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
-            ]
+            ],
+            showSelectionPalette: true,
+            clickoutFiresChange: true,
+            showInitial: true,
+            preferredFormat: "hex",
+            localStorageKey: "colorizr",
+            change: setColor,
+            move: setColor,
+            hide: setColor
         });
 
     }
