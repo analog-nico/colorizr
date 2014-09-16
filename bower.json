@@ -19,8 +19,8 @@
     "bower_components",
     "test"
   ],
-  "dependencies": {
-    "jquery": "1.11.1",
-    "spectrum": "1.5.1"
+  "devDependencies": {
+    "jquery": "^1.11.1",
+    "spectrum": "^1.5.1"
   }
 }
