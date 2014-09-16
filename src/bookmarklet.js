@@ -9,6 +9,7 @@
     function loadSpectrum() {
         var r = document.createElement('link');
         r.setAttribute('rel', 'stylesheet');
+        r.setAttribute('type', 'text/css');
         r.setAttribute('href', 'http://raw.githubusercontent.com/bgrins/spectrum/master/spectrum.css');
         document.getElementsByTagName('head')[0].appendChild(r);
         var s = document.createElement('script');
@@ -22,16 +23,15 @@
         document.getElementsByTagName('head')[0].appendChild(s);
     }
 
-    if (typeof jQuery == 'undefined') {
+    if (jQuery === undefined) {
         loadJQuery();
         loadSpectrum();
         loadColorizr();
-    } else if (typeof jQuery.fn.spectrum == 'undefined') {
+    } else if (jQuery.fn.spectrum === undefined) {
         loadSpectrum();
         loadColorizr();
     } else if (jQuery('.colorizr').length === 0) {
         loadColorizr();
     }
-
 
 }());
