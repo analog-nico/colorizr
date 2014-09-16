@@ -1,0 +1,19 @@
+{
+  "name": "colorizr",
+  "version": "0.0.1",
+  "description": "Coloring your webpage with instant feedback",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "coloring",
+    "design",
+    "webdesign",
+    "color",
+    "picker"
+  ],
+  "author": "Nicolai Kamenzky <nicolai.kamenzky@testrails.org>",
+  "license": "ISC",
+  "private": true
+}

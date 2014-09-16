@@ -1,0 +1,25 @@
+{
+  "name": "colorizr",
+  "version": "0.0.1",
+  "authors": [
+    "analog-nico <nicolai.kamenzky@testrails.org>"
+  ],
+  "description": "Coloring your webpage with instant feedback",
+  "main": "src/index.js",
+  "keywords": [
+    "coloring",
+    "design",
+    "webdesign",
+    "color",
+    "picker"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "1.11.1"
+  }
+}
