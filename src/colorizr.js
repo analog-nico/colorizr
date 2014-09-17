@@ -9,7 +9,7 @@
         return;
     }
 
-    $('head').append('<style type="text/css">${ css }}</style>');
+    $('head').append('<style type="text/css">${ css }</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
