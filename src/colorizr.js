@@ -31,7 +31,7 @@
                 'filter: none !important;' +
                 'float: none !important;' +
                 'font: normal normal normal normal 16px/1.4  !important;' +
-                'font-family: \'Courier New\', Courier, monospace !important;' +
+                'font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;' +
                 'font-size: 16px !important;' +
                 'font-stretch: normal !important;' +
                 'font-style: normal !important;' +
@@ -117,6 +117,7 @@
                 'bottom: 0 !important;' +
                 'left: 0 !important;' +
                 'right: 0 !important;' +
+                'padding-bottom: 20px !important;' +
             '}' +
             '#colorizr .clrz-shadow {' +
                 'box-shadow: inset 0 -20px 10px -10px white !important;' +
@@ -130,19 +131,45 @@
                 'display: none !important' +
             '}' +
             '#colorizr .clrz-rule > * {' +
-                'vertical-align: top !important;' +
+                'vertical-align: middle !important;' +
+            '}' +
+            '#colorizr .clrz-even-row {' +
+                'width: 100% !important;' +
+                'background-color: #f9f9f9 !important;' +
             '}' +
             '#colorizr .sp-replacer {' +
                 'margin-left: 30px !important;' +
+            '}' +
+            '#colorizr .clrz-target, #colorizr .clrz-attr, #colorizr .clrz-cssattr {' +
+                'font-family: "Courier New", Courier, monospace !important;' +
+            '}' +
+            '#colorizr .clrz-apply {' +
+                'color: #4a86e8 !important' +
+            '}' +
+            '#colorizr .clrz-apply:hover {' +
+                'text-decoration: underline !important;' +
+                'cursor: pointer !important;' +
+            '}' +
+            '#colorizr .clrz-title-title, #colorizr .clrz-title {' +
+                'width: 200px !important;' +
+            '}' +
+            '#colorizr .clrz-title-target, #colorizr .clrz-target {' +
+                'width: 350px !important;' +
+            '}' +
+            '#colorizr .clrz-title-attr, #colorizr .clrz-attr {' +
+                'width: 200px !important;' +
+            '}' +
+            '#colorizr .clrz-title-cssattr, #colorizr .clrz-cssattr {' +
+                'width: 250px !important;' +
             '}' +
         '</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
-        '<div class="clrz-reset">Title</div>' +
-        '<div class="clrz-reset">CSS-Selector</div>' +
-        '<div class="clrz-reset">Attribute</div>' +
-        '<div class="clrz-reset">CSS-Attribute</div>' +
+        '<div class="clrz-title-title clrz-reset">Title</div>' +
+        '<div class="clrz-title-target clrz-reset">CSS-Selector</div>' +
+        '<div class="clrz-title-attr clrz-reset">Attribute</div>' +
+        '<div class="clrz-title-cssattr clrz-reset">CSS-Attribute</div>' +
         '</div>'));
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
@@ -159,7 +186,7 @@
         '<input type="text" class="clrz-target clrz-reset"/>' +
         '<input type="text" class="clrz-attr clrz-reset" value="style"/>' +
         '<input type="text" class="clrz-cssattr clrz-reset"/>' +
-        '<button class="clrz-reset">Apply</button>' +
+        '<button class="clrz-apply clrz-reset">Apply</button>' +
     '</div>';
 
     function buttonClickHandler () {
@@ -224,10 +251,15 @@
 
     for ( var i = 0; i < 10; i++ ) {
         var widget = $(widgetTemplate);
+        if (i%2 === 0) {
+            widget.addClass('clrz-even-row');
+        }
         widget.appendTo(ruleContainerScroller);
         widget.find('button').click(buttonClickHandler);
     }
 
     panel.appendTo('body');
+
+    $('#colorizr button').click();
 
 }(window.jQuery));
