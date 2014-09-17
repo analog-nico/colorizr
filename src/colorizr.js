@@ -10,7 +10,7 @@
     }
 
     $('head').append('<style type="text/css">' +
-            '#colorizr, #colorizr * {' +
+            '#colorizr.clrz-reset, #colorizr .clrz-reset {' +
                 'animation: none !important;' +
                 '-webkit-appearance: none !important;' +
                 '-moz-appearance:    none !important;' +
@@ -97,17 +97,17 @@
             '}' +
         '</style>');
 
-    var panel = $('<div id="colorizr">');
+    var panel = $('<div id="colorizr" class="clrz-reset">');
 
     panel.appendTo('body');
 
     var widgetTemplate =
-    '<div>' +
-        '<input type="text" class="title"/>' +
-        '<input type="text" class="target"/>' +
-        '<input type="text" class="attr" value="style"/>' +
-        '<input type="text" class="cssattr"/>' +
-        '<button>Apply</button>' +
+    '<div class="clrz-reset">' +
+        '<input type="text" class="title clrz-reset"/>' +
+        '<input type="text" class="target clrz-reset"/>' +
+        '<input type="text" class="attr clrz-reset" value="style"/>' +
+        '<input type="text" class="cssattr clrz-reset"/>' +
+        '<button class="clrz-reset">Apply</button>' +
     '</div>';
 
     function buttonClickHandler () {
@@ -123,7 +123,7 @@
         var target = widget.find('.target').val();
         var attr = widget.find('.attr').val();
         var cssattr = widget.find('.cssattr').val();
-        var colorpicker = $('<input type="text" class="colorpicker" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
+        var colorpicker = $('<input type="text" class="colorpicker clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
         colorpicker.appendTo(widget);
 
         function getColor() {
