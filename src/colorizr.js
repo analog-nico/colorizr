@@ -9,12 +9,85 @@
         return;
     }
 
+    $('head').append('<style type="text/css">' +
+            '#colorizr, #colorizr * {' +
+                'animation: none !important;' +
+                '-webkit-appearance: none !important;' +
+                '-moz-appearance:    none !important;' +
+                'appearance:         none !important;' +
+                'background-color: transparent !important;' +
+                'background-image: none !important;' +
+                'border: 0 !important;' +
+                'bottom: auto !important;' +
+                'box-shadow: none !important;' +
+                'box-sizing: border-box !important;' +
+                'clear: none !important;' +
+                'color: #333333 !important;' +
+                'columns: auto auto !important;' +
+                'content: normal !important;' +
+                'cursor: auto !important;' +
+                'direction: ltr !important;' +
+                'display: inline !important;' +
+                'filter: none !important' +
+                'float: none !important;' +
+                'font: normal normal normal normal 16px/1.4  !important;' +
+                'font-family: \'Courier New\', Courier, monospace !important;' +
+                'font-size: 16px !important;' +
+                'font-stretch: normal !important;' +
+                'font-style: normal !important;' +
+                'font-variant: normal !important;' +
+                'font-weight: normal !important;' +
+                'hanging-punctuation: none !important;' +
+                'height: auto !important;' +
+                'hyphens: none !important;' +
+                'left: auto !important;' +
+                'letter-spacing: normal !important;' +
+                'line-height: normal !important;' +
+                'list-style: disc outside none !important;' +
+                'margin: 0 !important;' +
+                'max-height: none !important;' +
+                'max-width: none !important;' +
+                'min-height: 0 !important;' +
+                'min-width: 0 !important;' +
+                'opacity: 1 !important;' +
+                'orphans: 2 !important;' +
+                'outline: none !important;' +
+                'overflow: visible !important;' +
+                'overflow-x: visible !important;' +
+                'overflow-y: visible !important;' +
+                'padding: 0 !important;' +
+                'perspective: none !important;' +
+                'pointer-events: auto !important;' +
+                'position: static !important;' +
+                'right: auto !important;' +
+                'tab-size: 8 !important;' +
+                'table-layout: auto !important;' +
+                'text-align: left !important;' +
+                'text-align-last: auto !important;' +
+                'text-decoration: none !important;' +
+                'text-indent: 0 !important;' +
+                'text-overflow: clip !important' +
+                'text-shadow: none !important;' +
+                'text-transform: none !important;' +
+                'top: auto !important;' +
+                'transform: none !important;' +
+                'vertical-align: baseline !important;' +
+                'visibility: visible !important;' +
+                'white-space: normal !important;' +
+                'widows: 0 !important;' +
+                'width: auto !important;' +
+                'word-break: normal !important;' +
+                'word-spacing: normal !important;' +
+                'z-index: auto !important;' +
+                'zoom: 1 !important' +
+            '}' +
+        '</style>');
+
     var panel = $('<div id="colorizr">');
     panel.css({
         'width': '100%',
         'height': '200px',
         'position': 'fixed',
-        'top': 'auto',
         'bottom': '0',
         'left': '0',
         'right': '0',
@@ -23,15 +96,7 @@
         '-webkit-box-shadow': '0 0 6px -6px black',
         '-moz-box-shadow': '0 0 6px 0 black',
         'box-shadow': '0 0 6px 0 black',
-        'padding': '2em',
-        'overflow': 'auto',
-        'font-family': '\'Courier New\', Courier, monospace',
-        'color': '#333333',
-        // Resets
-        'border': '0',
-        'box-sizing': 'border-box',
-        'margin': '0',
-        'text-align': 'left'
+        'padding': '2em'
     });
 
     panel.appendTo('body');
