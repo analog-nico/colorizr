@@ -24,7 +24,7 @@ function loadSpectrum() {
 }
 
 function loadColorizr() {
-    loadScript('//raw.githubusercontent.com/analog-nico/colorizr/master/src/colorizr.js');
+    loadScript('//raw.githubusercontent.com/analog-nico/colorizr/master/dist/colorizr.js');
 }
 
 if (window.jQuery === undefined) {
