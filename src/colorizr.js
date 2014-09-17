@@ -81,32 +81,77 @@
                 'z-index: auto !important;' +
                 'zoom: 1 !important;' +
             '}' +
+            '#colorizr div.clrz-reset {' +
+                'display: inline-block !important;' +
+            '}' +
             '#colorizr.clrz-panel {' +
                 'width: 100% !important;' +
-                'height: 200px !important;' +
+                'height: 210px !important;' +
                 'position: fixed !important;' +
                 'bottom: 0 !important;' +
                 'left: 0 !important;' +
                 'right: 0 !important;' +
                 'z-index: 9999 !important;' +
-                'background-color: rgba(255, 255, 255, 0.9) !important;' +
+                'background-color: white !important;' +
                 '-webkit-box-shadow: 0 0 6px -6px black !important;' +
                 '-moz-box-shadow: 0 0 6px 0 black !important;' +
                 'box-shadow: 0 0 6px 0 black !important;' +
-                'padding: 2em !important;' +
+                'padding: 30px !important;' +
             '}' +
-            '#colorizr .clrz-rule {' +
-                'display: inline-block !important;' +
+            '#colorizr .clrz-header, #colorizr .clrz-rule {' +
                 'min-height: 30px !important;' +
+            '}' +
+            '#colorizr .clrz-header {' +
+                'width: 100% !important;' +
+                'border-bottom: 1px solid #aaa !important;' +
+            '}' +
+            '#colorizr .clrz-rule-container {' +
+                'height: 135px !important;' +
+                'width: 100% !important;' +
+                'position: relative !important;' +
+            '}' +
+            '#colorizr .clrz-rule-container-scroller {' +
+                'overflow-y: scroll !important;' +
+                'position: absolute !important;' +
+                'top: 0 !important;' +
+                'bottom: 0 !important;' +
+                'left: 0 !important;' +
+                'right: 0 !important;' +
+            '}' +
+            '#colorizr .clrz-shadow {' +
+                'box-shadow: inset 0 -20px 10px -10px white !important;' +
+                'position: absolute !important;' +
+                'height: 20px !important;' +
+                'bottom: 0 !important;' +
+                'left: 0 !important;' +
+                'right: 0 !important;' +
             '}' +
             '#colorizr .clrz-color {' +
                 'display: none !important' +
             '}' +
+            '#colorizr .clrz-rule > * {' +
+                'vertical-align: top !important;' +
+            '}' +
+            '#colorizr .sp-replacer {' +
+                'margin-left: 30px !important;' +
+            '}' +
         '</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
+    panel.append($('<div class="clrz-header clrz-reset">' +
+        '<div class="clrz-reset">Title</div>' +
+        '<div class="clrz-reset">CSS-Selector</div>' +
+        '<div class="clrz-reset">Attribute</div>' +
+        '<div class="clrz-reset">CSS-Attribute</div>' +
+        '</div>'));
 
-    panel.appendTo('body');
+    var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
+
+    var ruleContainerScroller = $('<div class="clrz-rule-container-scroller clrz-reset"></div>');
+    ruleContainer.append(ruleContainerScroller);
+
+    ruleContainer.append($('<div class="clrz-shadow clrz-reset">'));
+    panel.append(ruleContainer);
 
     var widgetTemplate =
     '<div class="clrz-rule clrz-reset">' +
@@ -179,8 +224,10 @@
 
     for ( var i = 0; i < 10; i++ ) {
         var widget = $(widgetTemplate);
-        widget.appendTo(panel);
+        widget.appendTo(ruleContainerScroller);
         widget.find('button').click(buttonClickHandler);
     }
+
+    panel.appendTo('body');
 
 }(window.jQuery));
