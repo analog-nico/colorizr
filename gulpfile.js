@@ -5,6 +5,8 @@ var runSequence = require('run-sequence');
 var minifyCSS = require('gulp-minify-css');
 var map = require('vinyl-map');
 var template = require('gulp-template');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 
 gulp.task('dev', ['watch', 'build']);
@@ -21,7 +23,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', ['clean'], function (done) {
-    runSequence('lint', 'colorizr.js', done);
+    runSequence('lint', 'colorizr.js', 'minify', done);
 });
 
 gulp.task('clean', function (done) {
@@ -54,5 +56,16 @@ gulp.task('colorizr.js', function (done) {
                 .on('end', done);
 
         });
+
+});
+
+gulp.task('minify', function () {
+
+    return gulp.src('dist/*.js')
+        .pipe(uglify())
+        .pipe(rename(function (path) {
+            path.basename += '.min';
+        }))
+        .pipe(gulp.dest('dist'));
 
 });
