@@ -81,7 +81,7 @@
                 'z-index: auto !important;' +
                 'zoom: 1 !important;' +
             '}' +
-            '#colorizr {' +
+            '#colorizr.clrz-panel {' +
                 'width: 100% !important;' +
                 'height: 200px !important;' +
                 'position: fixed !important;' +
@@ -95,14 +95,17 @@
                 'box-shadow: 0 0 6px 0 black !important;' +
                 'padding: 2em !important;' +
             '}' +
+            '#colorizr .clrz-rule {' +
+                'display: inline-block !important;' +
+            '}' +
         '</style>');
 
-    var panel = $('<div id="colorizr" class="clrz-reset">');
+    var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
 
     panel.appendTo('body');
 
     var widgetTemplate =
-    '<div class="clrz-reset">' +
+    '<div class="clrz-rule clrz-reset">' +
         '<input type="text" class="title clrz-reset"/>' +
         '<input type="text" class="target clrz-reset"/>' +
         '<input type="text" class="attr clrz-reset" value="style"/>' +
