@@ -39,7 +39,7 @@
             '<option class="clrz-reset" value="html">HTML Attribute</option>' +
         '</select>' +
         '<input type="text" class="clrz-name clrz-reset"/>' +
-        '<button class="clrz-apply clrz-reset">Apply</button>' +
+        '<button class="clrz-apply clrz-reset">Update --&gt;</button>' +
     '</div>';
 
     function buttonClickHandler () {
@@ -111,13 +111,40 @@
 
     }
 
+    var lastTarget = null;
+
+    function focusTarget() {
+        unfocusTarget();
+        /*jshint validthis:true */
+        var newTarget = $(this).val();
+        if (newTarget !== '') {
+            $(newTarget).css('outline', '2px dashed red');
+            lastTarget = newTarget;
+        }
+    }
+
+    function unfocusTarget() {
+        if (lastTarget !== null) {
+            $(lastTarget).css('outline', 'none');
+            lastTarget = null;
+        }
+    }
+
     for ( var i = 0; i < 12; i+=1 ) {
+
         var widget = $(widgetTemplate);
         if (i%2 === 0) {
             widget.addClass('clrz-even-row');
         }
         widget.appendTo(ruleContainerScroller);
+
         widget.find('button').click(buttonClickHandler).click();
+
+        widget.find('.clrz-target')
+            .focusin(focusTarget)
+            .keyup(focusTarget)
+            .focusout(unfocusTarget);
+
     }
 
     panel.appendTo('body');
