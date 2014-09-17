@@ -10,6 +10,12 @@ ${ jQuery }
     function loadSpectrum() {
         window.jQuery('head').append('<style type="text/css">${ spectrum.css }</style>');
         // spectrum.js start
+/*!
+ * Spectrum Colorpicker v1.5.1
+ * https://github.com/bgrins/spectrum
+ * Author: Brian Grinstead
+ * License: MIT
+ */
 ${ spectrum.js }
         // spectrum.js end
     }

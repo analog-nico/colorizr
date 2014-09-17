@@ -108,7 +108,9 @@ gulp.task('colorizr.bundled.js', function (done) {
 gulp.task('minify', function () {
 
     return gulp.src('dist/*.js')
-        .pipe(uglify())
+        .pipe(uglify({
+            preserveComments: 'some'
+        }))
         .pipe(rename(function (path) {
             path.basename += '.min';
         }))

@@ -1,3 +1,6 @@
+/*!
+ * Colorizr.js | https://github.com/analog-nico/colorizr | Author: Nicolai Kamenzky | License: ISC
+ */
 (function ($) {
     'use strict';
 
