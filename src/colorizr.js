@@ -28,7 +28,7 @@
                 'cursor: auto !important;' +
                 'direction: ltr !important;' +
                 'display: inline !important;' +
-                'filter: none !important' +
+                'filter: none !important;' +
                 'float: none !important;' +
                 'font: normal normal normal normal 16px/1.4  !important;' +
                 'font-family: \'Courier New\', Courier, monospace !important;' +
@@ -66,7 +66,7 @@
                 'text-align-last: auto !important;' +
                 'text-decoration: none !important;' +
                 'text-indent: 0 !important;' +
-                'text-overflow: clip !important' +
+                'text-overflow: clip !important;' +
                 'text-shadow: none !important;' +
                 'text-transform: none !important;' +
                 'top: auto !important;' +
@@ -79,7 +79,7 @@
                 'word-break: normal !important;' +
                 'word-spacing: normal !important;' +
                 'z-index: auto !important;' +
-                'zoom: 1 !important' +
+                'zoom: 1 !important;' +
             '}' +
         '</style>');
 
