@@ -97,6 +97,10 @@
             '}' +
             '#colorizr .clrz-rule {' +
                 'display: inline-block !important;' +
+                'min-height: 30px !important;' +
+            '}' +
+            '#colorizr .clrz-color {' +
+                'display: none !important' +
             '}' +
         '</style>');
 
@@ -106,10 +110,10 @@
 
     var widgetTemplate =
     '<div class="clrz-rule clrz-reset">' +
-        '<input type="text" class="title clrz-reset"/>' +
-        '<input type="text" class="target clrz-reset"/>' +
-        '<input type="text" class="attr clrz-reset" value="style"/>' +
-        '<input type="text" class="cssattr clrz-reset"/>' +
+        '<input type="text" class="clrz-title clrz-reset"/>' +
+        '<input type="text" class="clrz-target clrz-reset"/>' +
+        '<input type="text" class="clrz-attr clrz-reset" value="style"/>' +
+        '<input type="text" class="clrz-cssattr clrz-reset"/>' +
         '<button class="clrz-reset">Apply</button>' +
     '</div>';
 
@@ -117,16 +121,16 @@
 
         var widget = $(this).parent();
 
-        var oldColorpicker = widget.find('.colorpicker')
+        var oldColorpicker = widget.find('.clrz-color')
         if (oldColorpicker.length > 0) {
             oldColorpicker.spectrum('destroy');
             oldColorpicker.remove();
         }
 
-        var target = widget.find('.target').val();
-        var attr = widget.find('.attr').val();
-        var cssattr = widget.find('.cssattr').val();
-        var colorpicker = $('<input type="text" class="colorpicker clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
+        var target = widget.find('.clrz-target').val();
+        var attr = widget.find('.clrz-attr').val();
+        var cssattr = widget.find('.clrz-cssattr').val();
+        var colorpicker = $('<input type="text" class="clrz-color clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
         colorpicker.appendTo(widget);
 
         function getColor() {
@@ -165,7 +169,7 @@
             clickoutFiresChange: true,
             showInitial: true,
             preferredFormat: "hex",
-            localStorageKey: "colorizr",
+            localStorageKey: "colorizr.colors",
             change: setColor,
             move: setColor,
             hide: setColor
