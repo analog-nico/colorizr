@@ -98,6 +98,10 @@
     border-bottom: 1px solid #aaa !important;
 }
 
+#colorizr .clrz-title-title, #colorizr .clrz-title-target, #colorizr .clrz-title-manipulation, #colorizr .clrz-title-name {
+    font-weight: bold !important;
+}
+
 #colorizr .clrz-rule-container {
     height: 135px !important;
     width: 100% !important;
@@ -140,7 +144,7 @@
     margin-left: 30px !important;
 }
 
-#colorizr .clrz-target, #colorizr .clrz-attr, #colorizr .clrz-cssattr {
+#colorizr .clrz-target, #colorizr .clrz-name {
     font-family: "Courier New", Courier, monospace !important;
 }
 
@@ -155,16 +159,24 @@
 
 #colorizr .clrz-title-title, #colorizr .clrz-title {
     width: 200px !important;
+    padding-right: 15px !important;
 }
 
 #colorizr .clrz-title-target, #colorizr .clrz-target {
     width: 350px !important;
+    padding-right: 15px !important;
 }
 
-#colorizr .clrz-title-attr, #colorizr .clrz-attr {
-    width: 200px !important;
+#colorizr .clrz-title-manipulation, #colorizr .clrz-manipulation {
+    width: 150px !important;
 }
 
-#colorizr .clrz-title-cssattr, #colorizr .clrz-cssattr {
+#colorizr .clrz-manipulation:hover {
+    text-decoration: underline !important;
+    cursor: pointer !important;
+}
+
+#colorizr .clrz-title-name, #colorizr .clrz-name {
     width: 250px !important;
+    padding-right: 15px !important;
 }

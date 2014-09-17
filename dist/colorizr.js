@@ -12,14 +12,14 @@
         return;
     }
 
-    $('head').append('<style type="text/css">#colorizr .clrz-reset,#colorizr.clrz-reset{animation:none!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background-color:transparent!important;background-image:none!important;border:0!important;bottom:auto!important;box-shadow:none!important;box-sizing:border-box!important;clear:none!important;color:#333!important;columns:auto auto!important;content:normal!important;cursor:auto!important;direction:ltr!important;display:inline!important;filter:none!important;float:none!important;font:normal normal normal normal 16px/1.4!important;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:16px!important;font-stretch:normal!important;font-style:normal!important;font-variant:normal!important;font-weight:400!important;hanging-punctuation:none!important;height:auto!important;hyphens:none!important;left:auto!important;letter-spacing:normal!important;line-height:normal!important;list-style:disc!important;margin:0!important;max-height:none!important;max-width:none!important;min-height:0!important;min-width:0!important;opacity:1!important;orphans:2!important;outline:0!important;overflow:visible!important;overflow-x:visible!important;overflow-y:visible!important;padding:0!important;perspective:none!important;pointer-events:auto!important;position:static!important;right:auto!important;tab-size:8!important;table-layout:auto!important;text-align:left!important;text-align-last:auto!important;text-decoration:none!important;text-indent:0!important;text-overflow:clip!important;text-shadow:none!important;text-transform:none!important;top:auto!important;transform:none!important;vertical-align:baseline!important;visibility:visible!important;white-space:normal!important;widows:0!important;width:auto!important;word-break:normal!important;word-spacing:normal!important;z-index:auto!important;zoom:1!important}#colorizr div.clrz-reset{display:inline-block!important}#colorizr.clrz-panel{width:100%!important;height:210px!important;position:fixed!important;bottom:0!important;left:0!important;right:0!important;z-index:9999!important;background-color:#fff!important;-webkit-box-shadow:0 0 6px -6px #000!important;-moz-box-shadow:0 0 6px 0 #000!important;box-shadow:0 0 6px 0 #000!important;padding:30px!important}#colorizr .clrz-header,#colorizr .clrz-rule{min-height:30px!important}#colorizr .clrz-header{width:100%!important;border-bottom:1px solid #aaa!important}#colorizr .clrz-rule-container{height:135px!important;width:100%!important;position:relative!important}#colorizr .clrz-rule-container-scroller{overflow-y:scroll!important;position:absolute!important;top:0!important;bottom:0!important;left:0!important;right:0!important;padding-bottom:20px!important}#colorizr .clrz-shadow{box-shadow:inset 0 -20px 10px -10px #fff!important;position:absolute!important;height:20px!important;bottom:0!important;left:0!important;right:0!important}#colorizr .clrz-color{display:none!important}#colorizr .clrz-rule>*{vertical-align:middle!important}#colorizr .clrz-even-row{width:100%!important;background-color:#f9f9f9!important}#colorizr .sp-replacer{margin-left:30px!important}#colorizr .clrz-attr,#colorizr .clrz-cssattr,#colorizr .clrz-target{font-family:"Courier New",Courier,monospace!important}#colorizr .clrz-apply{color:#4a86e8!important}#colorizr .clrz-apply:hover{text-decoration:underline!important;cursor:pointer!important}#colorizr .clrz-title,#colorizr .clrz-title-title{width:200px!important}#colorizr .clrz-target,#colorizr .clrz-title-target{width:350px!important}#colorizr .clrz-attr,#colorizr .clrz-title-attr{width:200px!important}#colorizr .clrz-cssattr,#colorizr .clrz-title-cssattr{width:250px!important}</style>');
+    $('head').append('<style type="text/css">#colorizr .clrz-reset,#colorizr.clrz-reset{animation:none!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;background-color:transparent!important;background-image:none!important;border:0!important;bottom:auto!important;box-shadow:none!important;box-sizing:border-box!important;clear:none!important;color:#333!important;columns:auto auto!important;content:normal!important;cursor:auto!important;direction:ltr!important;display:inline!important;filter:none!important;float:none!important;font:normal normal normal normal 16px/1.4!important;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:16px!important;font-stretch:normal!important;font-style:normal!important;font-variant:normal!important;font-weight:400!important;hanging-punctuation:none!important;height:auto!important;hyphens:none!important;left:auto!important;letter-spacing:normal!important;line-height:normal!important;list-style:disc!important;margin:0!important;max-height:none!important;max-width:none!important;min-height:0!important;min-width:0!important;opacity:1!important;orphans:2!important;outline:0!important;overflow:visible!important;overflow-x:visible!important;overflow-y:visible!important;padding:0!important;perspective:none!important;pointer-events:auto!important;position:static!important;right:auto!important;tab-size:8!important;table-layout:auto!important;text-align:left!important;text-align-last:auto!important;text-decoration:none!important;text-indent:0!important;text-overflow:clip!important;text-shadow:none!important;text-transform:none!important;top:auto!important;transform:none!important;vertical-align:baseline!important;visibility:visible!important;white-space:normal!important;widows:0!important;width:auto!important;word-break:normal!important;word-spacing:normal!important;z-index:auto!important;zoom:1!important}#colorizr div.clrz-reset{display:inline-block!important}#colorizr.clrz-panel{width:100%!important;height:210px!important;position:fixed!important;bottom:0!important;left:0!important;right:0!important;z-index:9999!important;background-color:#fff!important;-webkit-box-shadow:0 0 6px -6px #000!important;-moz-box-shadow:0 0 6px 0 #000!important;box-shadow:0 0 6px 0 #000!important;padding:30px!important}#colorizr .clrz-header,#colorizr .clrz-rule{min-height:30px!important}#colorizr .clrz-header{width:100%!important;border-bottom:1px solid #aaa!important}#colorizr .clrz-title-manipulation,#colorizr .clrz-title-name,#colorizr .clrz-title-target,#colorizr .clrz-title-title{font-weight:700!important}#colorizr .clrz-rule-container{height:135px!important;width:100%!important;position:relative!important}#colorizr .clrz-rule-container-scroller{overflow-y:scroll!important;position:absolute!important;top:0!important;bottom:0!important;left:0!important;right:0!important;padding-bottom:20px!important}#colorizr .clrz-shadow{box-shadow:inset 0 -20px 10px -10px #fff!important;position:absolute!important;height:20px!important;bottom:0!important;left:0!important;right:0!important}#colorizr .clrz-color{display:none!important}#colorizr .clrz-rule>*{vertical-align:middle!important}#colorizr .clrz-even-row{width:100%!important;background-color:#f9f9f9!important}#colorizr .sp-replacer{margin-left:30px!important}#colorizr .clrz-name,#colorizr .clrz-target{font-family:"Courier New",Courier,monospace!important}#colorizr .clrz-apply{color:#4a86e8!important}#colorizr .clrz-apply:hover{text-decoration:underline!important;cursor:pointer!important}#colorizr .clrz-title,#colorizr .clrz-title-title{width:200px!important;padding-right:15px!important}#colorizr .clrz-target,#colorizr .clrz-title-target{width:350px!important;padding-right:15px!important}#colorizr .clrz-manipulation,#colorizr .clrz-title-manipulation{width:150px!important}#colorizr .clrz-manipulation:hover{text-decoration:underline!important;cursor:pointer!important}#colorizr .clrz-name,#colorizr .clrz-title-name{width:250px!important;padding-right:15px!important}</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
-        '<div class="clrz-title-title clrz-reset">Title</div>' +
-        '<div class="clrz-title-target clrz-reset">CSS-Selector</div>' +
-        '<div class="clrz-title-attr clrz-reset">Attribute</div>' +
-        '<div class="clrz-title-cssattr clrz-reset">CSS-Attribute</div>' +
+        '<div class="clrz-title-title clrz-reset">Title to remember</div>' +
+        '<div class="clrz-title-target clrz-reset">HTML Element Selector</div>' +
+        '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
+        '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
         '</div>'));
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
@@ -34,8 +34,11 @@
     '<div class="clrz-rule clrz-reset">' +
         '<input type="text" class="clrz-title clrz-reset"/>' +
         '<input type="text" class="clrz-target clrz-reset"/>' +
-        '<input type="text" class="clrz-attr clrz-reset" value="style"/>' +
-        '<input type="text" class="clrz-cssattr clrz-reset"/>' +
+        '<select class="clrz-manipulation clrz-reset">' +
+            '<option class="clrz-reset" value="css" selected>CSS Property</option>' +
+            '<option class="clrz-reset" value="html">HTML Attribute</option>' +
+        '</select>' +
+        '<input type="text" class="clrz-name clrz-reset"/>' +
         '<button class="clrz-apply clrz-reset">Apply</button>' +
     '</div>';
 
@@ -51,8 +54,16 @@
         }
 
         var target = widget.find('.clrz-target').val();
-        var attr = widget.find('.clrz-attr').val();
-        var cssattr = widget.find('.clrz-cssattr').val();
+
+        var manipulation = widget.find('.clrz-manipulation').val();
+        var name = widget.find('.clrz-name').val();
+        var attr = '';
+        var cssattr = name;
+        if (manipulation === 'html') {
+            attr = name;
+            cssattr = '';
+        }
+
         var colorpicker = $('<input type="text" class="clrz-color clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
         colorpicker.appendTo(widget);
 
@@ -100,7 +111,7 @@
 
     }
 
-    for ( var i = 0; i < 10; i+=1 ) {
+    for ( var i = 0; i < 12; i+=1 ) {
         var widget = $(widgetTemplate);
         if (i%2 === 0) {
             widget.addClass('clrz-even-row');

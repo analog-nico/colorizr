@@ -16,10 +16,10 @@
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
-        '<div class="clrz-title-title clrz-reset">Title</div>' +
-        '<div class="clrz-title-target clrz-reset">CSS-Selector</div>' +
-        '<div class="clrz-title-attr clrz-reset">Attribute</div>' +
-        '<div class="clrz-title-cssattr clrz-reset">CSS-Attribute</div>' +
+        '<div class="clrz-title-title clrz-reset">Title to remember</div>' +
+        '<div class="clrz-title-target clrz-reset">HTML Element Selector</div>' +
+        '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
+        '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
         '</div>'));
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
@@ -34,8 +34,11 @@
     '<div class="clrz-rule clrz-reset">' +
         '<input type="text" class="clrz-title clrz-reset"/>' +
         '<input type="text" class="clrz-target clrz-reset"/>' +
-        '<input type="text" class="clrz-attr clrz-reset" value="style"/>' +
-        '<input type="text" class="clrz-cssattr clrz-reset"/>' +
+        '<select class="clrz-manipulation clrz-reset">' +
+            '<option class="clrz-reset" value="css" selected>CSS Property</option>' +
+            '<option class="clrz-reset" value="html">HTML Attribute</option>' +
+        '</select>' +
+        '<input type="text" class="clrz-name clrz-reset"/>' +
         '<button class="clrz-apply clrz-reset">Apply</button>' +
     '</div>';
 
@@ -51,8 +54,16 @@
         }
 
         var target = widget.find('.clrz-target').val();
-        var attr = widget.find('.clrz-attr').val();
-        var cssattr = widget.find('.clrz-cssattr').val();
+
+        var manipulation = widget.find('.clrz-manipulation').val();
+        var name = widget.find('.clrz-name').val();
+        var attr = '';
+        var cssattr = name;
+        if (manipulation === 'html') {
+            attr = name;
+            cssattr = '';
+        }
+
         var colorpicker = $('<input type="text" class="clrz-color clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
         colorpicker.appendTo(widget);
 
@@ -100,7 +111,7 @@
 
     }
 
-    for ( var i = 0; i < 10; i+=1 ) {
+    for ( var i = 0; i < 12; i+=1 ) {
         var widget = $(widgetTemplate);
         if (i%2 === 0) {
             widget.addClass('clrz-even-row');
