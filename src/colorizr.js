@@ -255,11 +255,10 @@
             widget.addClass('clrz-even-row');
         }
         widget.appendTo(ruleContainerScroller);
-        widget.find('button').click(buttonClickHandler);
+        widget.find('button').click(buttonClickHandler).click();
     }
 
     panel.appendTo('body');
-
-    $('#colorizr button').click();
+    $('body').css('margin-bottom', '210px');
 
 }(window.jQuery));
