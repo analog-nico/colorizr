@@ -7,6 +7,7 @@ var map = require('vinyl-map');
 var template = require('gulp-template');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var path = require('path');
 
 
 gulp.task('dev', ['watch', 'build']);
@@ -23,7 +24,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('build', ['clean'], function (done) {
-    runSequence('lint', 'colorizr.js', 'minify', done);
+    runSequence('lint', 'colorizr.js', 'colorizr.bundled.js', 'minify', done);
 });
 
 gulp.task('clean', function (done) {
@@ -46,7 +47,7 @@ gulp.task('colorizr.js', function (done) {
             compatibility: 'ie7'
         }))
         .pipe(map(function (contents, filename) {
-            templateData.css = contents.toString().trim();
+            templateData.css = contents.toString().trim().replace(/\\/g, '\\\\').replace(/'/g, "\\'");
         }))
         .on('end', function () {
 
@@ -54,6 +55,51 @@ gulp.task('colorizr.js', function (done) {
                 .pipe(template(templateData))
                 .pipe(gulp.dest('dist/'))
                 .on('end', done);
+
+        });
+
+});
+
+gulp.task('colorizr.bundled.js', function (done) {
+
+    var templateData = {
+        spectrum: {}
+    };
+
+    gulp.src('bower_components/spectrum/spectrum.css')
+        .pipe(minifyCSS({
+            cache: false,
+            keepSpecialComments: 0,
+            keepBreaks: false,
+            compatibility: 'ie7'
+        }))
+        .pipe(map(function (contents, filename) {
+            templateData.spectrum.css = contents.toString().trim().replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        }))
+        .on('end', function () {
+
+            gulp.src([
+                'bower_components/jquery/dist/jquery.js',
+                'bower_components/spectrum/spectrum.js',
+                'dist/colorizr.js'
+            ])
+                .pipe(map(function (contents, filename) {
+                    if (path.basename(filename) === 'jquery.js') {
+                        templateData.jQuery = contents.toString().trim();
+                    } else if (path.basename(filename) === 'spectrum.js') {
+                        templateData.spectrum.js = contents.toString().trim();
+                    } else if (path.basename(filename) === 'colorizr.js') {
+                        templateData.colorizr = contents.toString().trim();
+                    }
+                }))
+                .on('end', function () {
+
+                    gulp.src('src/colorizr.bundled.js')
+                        .pipe(template(templateData))
+                        .pipe(gulp.dest('dist/'))
+                        .on('end', done);
+
+                });
 
         });
 
