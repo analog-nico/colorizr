@@ -12,7 +12,7 @@
         return;
     }
 
-    $('head').append('<style type="text/css">${ css }</style>');
+    $('head').append('<style type="text/css">/*:= css :*/</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
@@ -41,9 +41,10 @@
 
     function buttonClickHandler () {
 
+        /*jshint validthis:true */
         var widget = $(this).parent();
 
-        var oldColorpicker = widget.find('.clrz-color')
+        var oldColorpicker = widget.find('.clrz-color');
         if (oldColorpicker.length > 0) {
             oldColorpicker.spectrum('destroy');
             oldColorpicker.remove();
@@ -99,7 +100,7 @@
 
     }
 
-    for ( var i = 0; i < 10; i++ ) {
+    for ( var i = 0; i < 10; i+=1 ) {
         var widget = $(widgetTemplate);
         if (i%2 === 0) {
             widget.addClass('clrz-even-row');

@@ -80,8 +80,9 @@
   "rhino"         : false,    // Enable globals available when your code is running inside of the Rhino runtime environment.
   "wsh"           : false,    // Enable globals available when your code is running as a script for the Windows Script Host.
 
-  // Additional globals introduced by Jasmine
-//  "globals": {
+  "globals": {
+    "alert"       : false
+    // Additional globals introduced by Jasmine
 //    "describe"    : false,
 //    "it"          : false,
 //    "expect"      : false,
@@ -90,7 +91,7 @@
 //    "spyOn"       : false,
 //    "xdecribe"    : false,
 //    "xit"         : false
-//  },
+  },
 
   // == JSLint Legacy ===================================================
   // http://www.jshint.com/docs/options/#legacy

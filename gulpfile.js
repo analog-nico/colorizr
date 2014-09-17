@@ -2,12 +2,20 @@
 
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
+var jshint = require('gulp-jshint');
+var jshintStylish = require('jshint-stylish');
 var minifyCSS = require('gulp-minify-css');
 var map = require('vinyl-map');
 var template = require('gulp-template');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var path = require('path');
+
+
+var templateSettings = {
+    evaluate: /\/\*\:([\s\S]+?)\:\*\//g,
+    interpolate: /\/\*\:=([\s\S]+?)\:\*\//g
+};
 
 
 gulp.task('dev', ['watch', 'build']);
@@ -32,7 +40,12 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('lint', function () {
-    console.log('TODO: Linting');
+
+    return gulp.src('src/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter(jshintStylish))
+        .pipe(jshint.reporter('fail'));
+
 });
 
 gulp.task('colorizr.js', function (done) {
@@ -52,7 +65,7 @@ gulp.task('colorizr.js', function (done) {
         .on('end', function () {
 
             gulp.src('src/colorizr.js')
-                .pipe(template(templateData))
+                .pipe(template(templateData, templateSettings))
                 .pipe(gulp.dest('dist/'))
                 .on('end', done);
 
@@ -95,7 +108,7 @@ gulp.task('colorizr.bundled.js', function (done) {
                 .on('end', function () {
 
                     gulp.src('src/colorizr.bundled.js')
-                        .pipe(template(templateData))
+                        .pipe(template(templateData, templateSettings))
                         .pipe(gulp.dest('dist/'))
                         .on('end', done);
 
