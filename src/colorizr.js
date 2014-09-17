@@ -83,21 +83,20 @@
             '}' +
         '</style>');
 
-    var panel = $('<div id="colorizr">');
-    panel.css({
-        'width': '100% !important',
-        'height': '200px !important',
-        'position': 'fixed !important',
-        'bottom': '0 !important',
-        'left': '0 !important',
-        'right': '0 !important',
-        'z-index': '9999 !important',
-        'background-color': 'rgba(255, 255, 255, 0.9) !important',
-        '-webkit-box-shadow': '0 0 6px -6px black !important',
-        '-moz-box-shadow': '0 0 6px 0 black !important',
-        'box-shadow': '0 0 6px 0 black !important',
-        'padding': '2em !important'
-    });
+    var panel = $('<div id="colorizr" style="' +
+        'width: 100% !important;' +
+        'height: 200px !important;' +
+        'position: fixed !important;' +
+        'bottom: 0 !important;' +
+        'left: 0 !important;' +
+        'right: 0 !important;' +
+        'z-index: 9999 !important;' +
+        'background-color: rgba(255, 255, 255, 0.9) !important;' +
+        '-webkit-box-shadow: 0 0 6px -6px black !important;' +
+        '-moz-box-shadow: 0 0 6px 0 black !important;' +
+        'box-shadow: 0 0 6px 0 black !important;' +
+        'padding: 2em !important;' +
+        '"></div>');
 
     panel.appendTo('body');
 
