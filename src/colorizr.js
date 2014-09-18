@@ -159,6 +159,12 @@
             '"></div>');
         container.append(savedPalettes);
 
+        function loadPalette(rules) {
+            return function () {
+                loadAndApplyRules(rules);
+            };
+        }
+
         var palettes = loadPalettes();
         if (palettes.length === 0) {
             savedPalettes.text('No palettes saved yet.');
@@ -174,6 +180,7 @@
 
                 var palette = $('<div class="clrz-saved-palette clrz-reset clrz-alpha"></div>');
                 addColorsToPalette(colors, palette);
+                palette.click(loadPalette(palettes[i]));
                 palette.appendTo(savedPalettes);
             }
         }
