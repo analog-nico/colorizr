@@ -70,7 +70,7 @@
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
         '<div class="clrz-title-title clrz-reset">For better recollection</div>' +
-        '<div class="clrz-title-target clrz-reset">HTML Element Selector</div>' +
+        '<div class="clrz-title-target clrz-reset">HTML Element Selector (jQuery style)</div>' +
         '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
         '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
         '</div>'));
