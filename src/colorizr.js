@@ -118,6 +118,7 @@
             colors[colors.length] = $(this).val();
         });
         var palette = panel.find('#clrz-palette');
+        palette.removeClass('clrz-alpha');
         palette.children().remove();
         for ( var i = 0; i < colors.length; i+=1 ) {
             var width = (i === 0 ?
@@ -129,6 +130,9 @@
                     'width: ' + width + 'px !important;' +
                     '"></div>')
             );
+        }
+        if (colors.length > 0) {
+            palette.addClass('clrz-alpha');
         }
     }
 

@@ -191,6 +191,10 @@
     margin-right: 15px !important;
 }
 
+#colorizr #clrz-palette.clrz-alpha {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==) !important;
+}
+
 #colorizr #clrz-palette .clrz-palette-color {
     height: 100% !important;
     cursor: pointer !important;
