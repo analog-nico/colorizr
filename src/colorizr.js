@@ -198,6 +198,11 @@
         }
     }
 
+    function clickApplyButton() {
+        /*jshint validthis:true */
+        $(this).parent().find('button').click();
+    }
+
     for ( var i = 0; i < 12; i+=1 ) {
 
         var widget = $(widgetTemplate);
@@ -211,7 +216,14 @@
         widget.find('.clrz-target')
             .focusin(focusTarget)
             .keyup(focusTarget)
+            .keyup(clickApplyButton)
             .focusout(unfocusTarget);
+
+        widget.find('.clrz-manipulation')
+            .change(clickApplyButton);
+
+        widget.find('.clrz-name')
+            .keyup(clickApplyButton);
 
     }
 

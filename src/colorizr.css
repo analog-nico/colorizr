@@ -140,7 +140,7 @@
 }
 
 #colorizr .sp-replacer {
-    margin-left: 30px !important;
+    margin-left: 15px !important;
 }
 
 #colorizr .clrz-target, #colorizr .clrz-name {
@@ -148,7 +148,8 @@
 }
 
 #colorizr .clrz-apply {
-    color: #4a86e8 !important
+    color: #4a86e8 !important;
+    display: none !important;
 }
 
 #colorizr .clrz-apply:hover {
