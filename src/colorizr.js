@@ -47,7 +47,9 @@
             $(this).find('.clrz-color').val(rules[i].color);
             $(this).find('.clrz-apply').each(function () {
                 reloadColorPicker.call(this, {
-                    useColorInInputfield: true
+                    useColorInInputfield: true,
+                    keepSaveDisabled: true,
+                    setColor: true
                 });
             });
         });
@@ -255,8 +257,13 @@
         colorinput.spectrum('set', getColor());
         colorinput.spectrum((foundTargetElements() ? 'enable' : 'disable'));
 
-        enableSave();
+        if (!options.keepSaveDisabled) {
+            enableSave();
+        }
         updatePalette();
+        if (options.setColor) {
+            setColor(getColor());
+        }
 
     }
 
