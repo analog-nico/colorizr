@@ -12,6 +12,56 @@
         return;
     }
 
+    var useLocalStorage = false;
+    try {
+        localStorage.setItem('colorizr.test', 'xyz');
+        localStorage.removeItem('colorizr.test');
+        useLocalStorage = true;
+    } catch(e) { }
+
+    function loadRules() {
+
+        if (useLocalStorage === false) {
+            return;
+        }
+
+        var rules = JSON.parse(localStorage.getItem('colorizr.rules'));
+        $('#colorizr .clrz-rule').each(function (i) {
+            if (i >= rules.length) {
+                return;
+            }
+            $(this).find('.clrz-title').val(rules[i].title);
+            $(this).find('.clrz-target').val(rules[i].target);
+            $(this).find('.clrz-manipulation').val(rules[i].manipulation);
+            $(this).find('.clrz-name').val(rules[i].name);
+            $(this).find('.clrz-color').val(rules[i].color);
+        });
+
+    }
+
+    function storeRules() {
+
+        if (useLocalStorage === false) {
+            return;
+        }
+
+        var rules = [];
+        $('#colorizr .clrz-rule').each(function (i) {
+            var rule = {
+                title: $(this).find('.clrz-title').val(),
+                target: $(this).find('.clrz-target').val(),
+                manipulation: $(this).find('.clrz-manipulation').val(),
+                name: $(this).find('.clrz-name').val(),
+                color: $(this).find('.clrz-color').val()
+            };
+            rules[i] = rule;
+        });
+
+        localStorage.setItem('colorizr.rules', JSON.stringify(rules));
+
+    }
+
+
     $('head').append('<style type="text/css">/*:= css :*/</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
@@ -104,10 +154,15 @@
             showInitial: true,
             preferredFormat: "hex",
             localStorageKey: "colorizr.colors",
-            change: setColor,
+            change: function () {
+                setColor();
+                storeRules();
+            },
             move: setColor,
             hide: setColor
         });
+
+        storeRules();
 
     }
 
@@ -138,7 +193,7 @@
         }
         widget.appendTo(ruleContainerScroller);
 
-        widget.find('button').click(buttonClickHandler).click();
+        widget.find('button').click(buttonClickHandler);
 
         widget.find('.clrz-target')
             .focusin(focusTarget)
@@ -149,5 +204,8 @@
 
     panel.appendTo('body');
     $('body').css('margin-bottom', '210px');
+
+    loadRules();
+    panel.find('button').click();
 
 }(window.jQuery));
