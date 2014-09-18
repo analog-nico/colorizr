@@ -12604,16 +12604,22 @@ return jQuery;
         useLocalStorage = true;
     } catch(e) { }
 
-    function loadRules() {
+    function loadPalettes() {
 
         if (useLocalStorage === false) {
-            return;
+            return [];
         }
 
-        var rules = JSON.parse(localStorage.getItem('colorizr.rules'));
-        if (rules === undefined || rules === null || rules.length === undefined) {
-            return;
+        var palettes = JSON.parse(localStorage.getItem('colorizr.palettes'));
+        if (palettes === undefined || palettes === null || palettes.length === undefined) {
+            return [];
         }
+
+        return palettes;
+
+    }
+
+    function loadAndApplyRules(rules) {
 
         $('#colorizr').find('.clrz-rule').each(function (i) {
             if (i >= rules.length) {
@@ -12624,11 +12630,19 @@ return jQuery;
             $(this).find('.clrz-manipulation').val(rules[i].manipulation);
             $(this).find('.clrz-name').val(rules[i].name);
             $(this).find('.clrz-color').val(rules[i].color);
+            $(this).find('.clrz-apply').each(function () {
+                reloadColorPicker.call(this, {
+                    useColorInInputfield: true
+                });
+            });
         });
 
     }
 
     function storeRules() {
+
+        /*jshint validthis:true */
+        $(this).addClass('clrz-hide');
 
         if (useLocalStorage === false) {
             return;
@@ -12641,11 +12655,15 @@ return jQuery;
                 target: $(this).find('.clrz-target').val(),
                 manipulation: $(this).find('.clrz-manipulation').val(),
                 name: $(this).find('.clrz-name').val(),
-                color: $(this).find('.clrz-color').val()
+                color: $(this).find('.clrz-color').val(),
+                active: ($(this).find('.sp-replacer').hasClass('sp-disabled') ? false : true)
             };
         });
 
-        localStorage.setItem('colorizr.rules', JSON.stringify(rules));
+        var palettes = loadPalettes();
+        palettes[palettes.length] = rules;
+
+        localStorage.setItem('colorizr.palettes', JSON.stringify(palettes));
 
     }
 
@@ -12704,6 +12722,8 @@ return jQuery;
         '<div id="clrz-palette" class="clrz-reset"></div>' +
         '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
+
+    panel.find('#clrz-save').click(storeRules);
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
 
@@ -12783,6 +12803,13 @@ return jQuery;
             }
         }
 
+        function enableSave() {
+            if (useLocalStorage === false) {
+                return;
+            }
+            $('#colorizr').find('#clrz-save').removeClass('clrz-hide');
+        }
+
         colorinput.spectrum({
             showInput: true,
             showAlpha: true,
@@ -12804,7 +12831,7 @@ return jQuery;
             containerClassName: 'clrz-dont-colorize',
             change: function () {
                 setColor();
-                storeRules();
+                enableSave();
                 updatePalette();
             },
             move: setColor,
@@ -12813,7 +12840,7 @@ return jQuery;
         colorinput.spectrum('set', getColor());
         colorinput.spectrum((foundTargetElements() ? 'enable' : 'disable'));
 
-        storeRules();
+        enableSave();
         updatePalette();
 
     }
@@ -12852,7 +12879,7 @@ return jQuery;
         }
         widget.appendTo(ruleContainerScroller);
 
-        widget.find('.clrz-apply').click(reloadColorPicker);
+        widget.find('.clrz-apply').click(reloadColorPicker).click();
 
         widget.find('.clrz-target')
             .focusin(focusTarget)
@@ -12870,13 +12897,6 @@ return jQuery;
 
     panel.appendTo('body');
     $('body').css('margin-bottom', '210px');
-
-    loadRules();
-    panel.find('.clrz-apply').each(function () {
-        reloadColorPicker.call(this, {
-            useColorInInputfield: true
-        });
-    });
 
 }(window.jQuery));
         // colorizr.js end
