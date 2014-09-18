@@ -30,7 +30,7 @@
             return;
         }
 
-        $('#colorizr .clrz-rule').each(function (i) {
+        $('#colorizr').find('.clrz-rule').each(function (i) {
             if (i >= rules.length) {
                 return;
             }
@@ -50,15 +50,14 @@
         }
 
         var rules = [];
-        $('#colorizr .clrz-rule').each(function (i) {
-            var rule = {
+        $('#colorizr').find('.clrz-rule').each(function (i) {
+            rules[i] = {
                 title: $(this).find('.clrz-title').val(),
                 target: $(this).find('.clrz-target').val(),
                 manipulation: $(this).find('.clrz-manipulation').val(),
                 name: $(this).find('.clrz-name').val(),
                 color: $(this).find('.clrz-color').val()
             };
-            rules[i] = rule;
         });
 
         localStorage.setItem('colorizr.rules', JSON.stringify(rules));
