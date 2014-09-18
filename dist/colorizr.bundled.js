@@ -12678,7 +12678,7 @@ return jQuery;
         '</select>' +
         '<input type="text" class="clrz-name clrz-reset"/>' +
         '<button class="clrz-apply clrz-reset">Update --&gt;</button>' +
-        '<input type="text" class="clrz-color clrz-reset" data-target="" data-manipulation="" data-name=""/>' +
+        '<input type="text" class="clrz-color clrz-reset" data-target="" data-manipulation="css" data-name=""/>' +
     '</div>';
 
     function reloadColorPicker(options) {
