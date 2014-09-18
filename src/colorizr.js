@@ -64,6 +64,49 @@
 
     }
 
+    var paletteWasRecentlyUpdated = false;
+    var paletteShouldAgainBeUpdated = false;
+
+    function updatePalette() {
+        if (paletteWasRecentlyUpdated) {
+            paletteShouldAgainBeUpdated = true;
+        } else {
+            updatePaletteNow();
+            paletteWasRecentlyUpdated = true;
+            setTimeout(function () {
+                paletteWasRecentlyUpdated = false;
+                if (paletteShouldAgainBeUpdated) {
+                    paletteShouldAgainBeUpdated = false;
+                    updatePalette();
+                }
+            }, 500);
+        }
+    }
+
+    function updatePaletteNow() {
+        var panel = $('#colorizr');
+        var colors = [];
+        panel.find('.clrz-color').each(function () {
+            if ($(this).parent().find('.sp-replacer').hasClass('sp-disabled')) {
+                return;
+            }
+            colors[colors.length] = $(this).val();
+        });
+        var palette = panel.find('#clrz-palette');
+        palette.children().remove();
+        for ( var i = 0; i < colors.length; i+=1 ) {
+            var width = (i === 0 ?
+                (150 - ((colors.length-1)*Math.floor(150/colors.length))) :
+                Math.floor(150/colors.length));
+            palette.append(
+                $('<div class="clrz-palette-color clrz-reset" style="' +
+                    'background-color: ' + colors[i] + ' !important;' +
+                    'width: ' + width + 'px !important;' +
+                    '"></div>')
+            );
+        }
+    }
+
 
     $('head').append('<style type="text/css">/*:= css :*/</style>');
 
@@ -73,6 +116,7 @@
         '<div class="clrz-title-target clrz-reset">HTML Element Selector (jQuery style)</div>' +
         '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
         '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
+        '<div id="clrz-palette" class="clrz-reset"></div>' +
         '</div>'));
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
@@ -175,6 +219,7 @@
             change: function () {
                 setColor();
                 storeRules();
+                updatePalette();
             },
             move: setColor,
             hide: setColor
@@ -183,6 +228,7 @@
         colorinput.spectrum((foundTargetElements() ? 'enable' : 'disable'));
 
         storeRules();
+        updatePalette();
 
     }
 

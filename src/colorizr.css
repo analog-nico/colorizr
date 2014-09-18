@@ -99,6 +99,7 @@
 
 #colorizr .clrz-title-title, #colorizr .clrz-title-target, #colorizr .clrz-title-manipulation, #colorizr .clrz-title-name {
     font-weight: bold !important;
+    vertical-align: top !important;
 }
 
 #colorizr .clrz-rule-container {
@@ -179,4 +180,15 @@
 #colorizr .clrz-title-name, #colorizr .clrz-name {
     width: 250px !important;
     padding-right: 15px !important;
+}
+
+#colorizr #clrz-palette {
+    height: 22px !important;
+    width: 150px !important;
+    background-color: white !important;
+    box-shadow: 0 2px 5px 2px #ccc !important;
+}
+
+#colorizr #clrz-palette .clrz-palette-color {
+    height: 100% !important;
 }
