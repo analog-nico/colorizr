@@ -187,8 +187,25 @@
     width: 150px !important;
     background-color: white !important;
     box-shadow: 0 1px 3px 1px #999 !important;
+    cursor: pointer !important;
+    margin-right: 15px !important;
 }
 
 #colorizr #clrz-palette .clrz-palette-color {
     height: 100% !important;
+    cursor: pointer !important;
+}
+
+#colorizr #clrz-save {
+    cursor: pointer !important;
+    color: #4a86e8 !important;
+    vertical-align: top !important;
+}
+
+#colorizr #clrz-save:hover {
+    text-decoration: underline !important;
+}
+
+#colorizr #clrz-save.clrz-hide {
+    display: none !important;
 }

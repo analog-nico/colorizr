@@ -117,6 +117,7 @@
         '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
         '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
         '<div id="clrz-palette" class="clrz-reset"></div>' +
+        '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
@@ -255,7 +256,7 @@
 
     function clickApplyButton() {
         /*jshint validthis:true */
-        $(this).parent().find('button').click();
+        $(this).parent().find('.clrz-apply').click();
     }
 
     for ( var i = 0; i < 12; i+=1 ) {
@@ -266,7 +267,7 @@
         }
         widget.appendTo(ruleContainerScroller);
 
-        widget.find('button').click(reloadColorPicker);
+        widget.find('.clrz-apply').click(reloadColorPicker);
 
         widget.find('.clrz-target')
             .focusin(focusTarget)
@@ -286,7 +287,7 @@
     $('body').css('margin-bottom', '210px');
 
     loadRules();
-    panel.find('button').each(function () {
+    panel.find('.clrz-apply').each(function () {
         reloadColorPicker.call(this, {
             useColorInInputfield: true
         });
