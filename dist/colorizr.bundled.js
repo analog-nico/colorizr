@@ -12610,12 +12610,17 @@ return jQuery;
             return [];
         }
 
-        var palettes = JSON.parse(localStorage.getItem('colorizr.palettes'));
-        if (palettes === undefined || palettes === null || palettes.length === undefined) {
+        var palettes = localStorage.getItem('colorizr.palettes');
+        if (palettes === undefined || palettes === null || palettes === '') {
             return [];
         }
 
-        return palettes;
+        var parsedPalettes = JSON.parse(palettes);
+        if (parsedPalettes.length === undefined) {
+            return [];
+        }
+
+        return parsedPalettes;
 
     }
 
@@ -12828,7 +12833,7 @@ return jQuery;
             showSelectionPalette: true,
             clickoutFiresChange: true,
             showInitial: true,
-            preferredFormat: "hex",
+            preferredFormat: "rgb",
             localStorageKey: "colorizr.colors",
             containerClassName: 'clrz-dont-colorize',
             change: function () {
