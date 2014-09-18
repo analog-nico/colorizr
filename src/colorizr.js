@@ -63,8 +63,7 @@
 
     function storeRules() {
 
-        /*jshint validthis:true */
-        $(this).addClass('clrz-hide');
+        disableSave();
 
         if (useLocalStorage === false) {
             return;
@@ -189,6 +188,17 @@
 
     }
 
+    function enableSave() {
+        if (useLocalStorage === false) {
+            return;
+        }
+        $('#colorizr').find('#clrz-save').removeClass('clrz-hide');
+    }
+
+    function disableSave() {
+        $('#colorizr').find('#clrz-save').addClass('clrz-hide');
+    }
+
 
     $('head').append('<style type="text/css">/*:= css :*/</style>');
 
@@ -282,13 +292,6 @@
             }
         }
 
-        function enableSave() {
-            if (useLocalStorage === false) {
-                return;
-            }
-            $('#colorizr').find('#clrz-save').removeClass('clrz-hide');
-        }
-
         colorinput.spectrum({
             showInput: true,
             showAlpha: true,
@@ -321,6 +324,8 @@
 
         if (!options.keepSaveDisabled) {
             enableSave();
+        } else {
+            disableSave();
         }
         updatePalette();
         if (options.setColor) {
