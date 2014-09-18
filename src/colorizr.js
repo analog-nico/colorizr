@@ -108,6 +108,20 @@
         }
     }
 
+    function addColorsToPalette(colors, palette) {
+        for (var i = 0; i < colors.length; i += 1) {
+            var width = (i === 0 ?
+                (150 - ((colors.length - 1) * Math.floor(150 / colors.length))) :
+                Math.floor(150 / colors.length));
+            palette.append(
+                $('<div class="clrz-palette-color clrz-reset" style="' +
+                    'background-color: ' + colors[i] + ' !important;' +
+                    'width: ' + width + 'px !important;' +
+                    '"></div>')
+            );
+        }
+    }
+
     function updatePaletteNow() {
         var panel = $('#colorizr');
         var colors = [];
@@ -120,20 +134,52 @@
         var palette = panel.find('#clrz-palette');
         palette.removeClass('clrz-alpha');
         palette.children().remove();
-        for ( var i = 0; i < colors.length; i+=1 ) {
-            var width = (i === 0 ?
-                (150 - ((colors.length-1)*Math.floor(150/colors.length))) :
-                Math.floor(150/colors.length));
-            palette.append(
-                $('<div class="clrz-palette-color clrz-reset" style="' +
-                    'background-color: ' + colors[i] + ' !important;' +
-                    'width: ' + width + 'px !important;' +
-                    '"></div>')
-            );
-        }
+        addColorsToPalette(colors, palette);
         if (colors.length > 0) {
             palette.addClass('clrz-alpha');
         }
+    }
+
+    function showSavedPalettes() {
+
+        var panel = $('#colorizr');
+        panel.find('#clrz-palettes-container').remove();
+
+        var container = $('<div id="clrz-palettes-container" class="clrz-reset"></div>');
+        container.click(function () {
+            panel.find('#clrz-palettes-container').remove();
+        });
+
+        var palettePosition = panel.find('#clrz-palette').position();
+
+        var savedPalettes = $('<div id="clrz-saved-palettes" class="clrz-reset" style="' +
+            'top: ' + (palettePosition.top + 30 - 2) + 'px !important;' +
+            'left: ' + palettePosition.left + 'px !important;' +
+            'height: ' + (210 - palettePosition.top - 30 - 24) + 'px !important;' +
+            '"></div>');
+        container.append(savedPalettes);
+
+        var palettes = loadPalettes();
+        if (palettes.length === 0) {
+            savedPalettes.text('No palettes saved yet.');
+        } else {
+            for ( var i = palettes.length-1; i >= 0; i-=1 ) {
+                var colors = [];
+                for ( var k = 0; k < palettes[i].length; k+=1 ) {
+                    if (!palettes[i][k].active) {
+                        continue;
+                    }
+                    colors[colors.length] = palettes[i][k].color;
+                }
+
+                var palette = $('<div class="clrz-saved-palette clrz-reset clrz-alpha"></div>');
+                addColorsToPalette(colors, palette);
+                palette.appendTo(savedPalettes);
+            }
+        }
+
+        container.appendTo(panel);
+
     }
 
 
@@ -149,6 +195,7 @@
         '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
 
+    panel.find('#clrz-palette').click(showSavedPalettes);
     panel.find('#clrz-save').click(storeRules);
 
     var ruleContainer = $('<div class="clrz-rule-container clrz-reset">');
