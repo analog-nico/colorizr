@@ -234,7 +234,6 @@
         var widget = $(this).parent();
 
         var colorinput = widget.find('.clrz-color');
-        colorinput.spectrum('destroy');
 
         var target = widget.find('.clrz-target').val();
         var manipulation = widget.find('.clrz-manipulation').val();
