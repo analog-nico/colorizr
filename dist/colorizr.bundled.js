@@ -12675,52 +12675,47 @@ return jQuery;
         '</select>' +
         '<input type="text" class="clrz-name clrz-reset"/>' +
         '<button class="clrz-apply clrz-reset">Update --&gt;</button>' +
+        '<input type="text" class="clrz-color clrz-reset" data-target="" data-manipulation="" data-name=""/>' +
     '</div>';
 
-    function buttonClickHandler () {
+    function reloadColorPicker(options) {
+
+        options = options || {};
 
         /*jshint validthis:true */
         var widget = $(this).parent();
 
-        var oldColorpicker = widget.find('.clrz-color');
-        if (oldColorpicker.length > 0) {
-            oldColorpicker.spectrum('destroy');
-            oldColorpicker.remove();
-        }
+        var colorinput = widget.find('.clrz-color');
+        colorinput.spectrum('destroy');
 
         var target = widget.find('.clrz-target').val();
-
         var manipulation = widget.find('.clrz-manipulation').val();
         var name = widget.find('.clrz-name').val();
-        var attr = '';
-        var cssattr = name;
-        if (manipulation === 'html') {
-            attr = name;
-            cssattr = '';
-        }
 
-        var colorpicker = $('<input type="text" class="clrz-color clrz-reset" data-target="' + target + '" data-attr="' + attr + '" data-cssattr="' + cssattr + '"/>');
-        colorpicker.appendTo(widget);
+        colorinput.attr({
+            'data-target': target,
+            'data-manipulation': manipulation,
+            'data-name': name
+        });
 
         function getColor() {
-            if (cssattr !== '') {
-                return $(target).first().css(cssattr);
-            } else if (attr !== '') {
-                return $(target).first().attr(attr);
+            if (manipulation === 'html') {
+                return $(target).first().attr(name);
+            } else {
+                return $(target).first().css(name);
             }
-            return '';
         }
 
         function setColor(color) {
             // $(target) is not cached since page might dynamically create new matching elements.
-            if (cssattr !== '') {
-                $(target).css(cssattr, color);
-            } else if (attr !== '') {
-                $(target).attr(attr, color);
+            if (manipulation === 'html') {
+                $(target).attr(name, color);
+            } else {
+                $(target).css(name, color);
             }
         }
 
-        colorpicker.spectrum({
+        colorinput.spectrum({
             color: getColor(),
             showInput: true,
             showAlpha: true,
@@ -12778,7 +12773,7 @@ return jQuery;
         }
         widget.appendTo(ruleContainerScroller);
 
-        widget.find('button').click(buttonClickHandler);
+        widget.find('button').click(reloadColorPicker);
 
         widget.find('.clrz-target')
             .focusin(focusTarget)
