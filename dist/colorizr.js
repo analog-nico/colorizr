@@ -116,6 +116,21 @@
             'data-name': name
         });
 
+        function getTargetElements() {
+            // $(target) is not cached since page might dynamically create new matching elements.
+
+            if (target === '') {
+                return $('');
+            }
+
+            var targetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + target;
+            return $(targetWithoutColorizrPanel);
+        }
+
+        function foundTargetElements() {
+            return getTargetElements().length > 0;
+        }
+
         function getColor() {
 
             if (options.useColorInInputfield) {
@@ -131,23 +146,14 @@
         }
 
         function setColor(color) {
-            // $(target) is not cached since page might dynamically create new matching elements.
-
-            if (target === '') {
-                return;
-            }
-
-            var targetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + target;
-
             if (manipulation === 'html') {
-                $(targetWithoutColorizrPanel).attr(name, color);
+                getTargetElements().attr(name, color);
             } else {
-                $(targetWithoutColorizrPanel).css(name, color);
+                getTargetElements().css(name, color);
             }
         }
 
         colorinput.spectrum({
-            color: getColor(),
             showInput: true,
             showAlpha: true,
             showPalette: true,
@@ -172,6 +178,8 @@
             move: setColor,
             hide: setColor
         });
+        colorinput.spectrum('set', getColor());
+        colorinput.spectrum((foundTargetElements() ? 'enable' : 'disable'));
 
         storeRules();
 
