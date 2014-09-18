@@ -207,7 +207,7 @@
         '<div class="clrz-title-title clrz-reset">For better recollection</div>' +
         '<div class="clrz-title-target clrz-reset">HTML Element Selector (jQuery style)</div>' +
         '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
-        '<div class="clrz-title-name clrz-reset">Property or Attribute Name</div>' +
+        '<div class="clrz-title-name clrz-reset">Prop / Attrib Name</div>' +
         '<div id="clrz-palette" class="clrz-reset"></div>' +
         '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
