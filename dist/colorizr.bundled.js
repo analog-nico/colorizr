@@ -12611,6 +12611,10 @@ return jQuery;
         }
 
         var rules = JSON.parse(localStorage.getItem('colorizr.rules'));
+        if (rules === undefined || rules === null || rules.length === undefined) {
+            return;
+        }
+
         $('#colorizr .clrz-rule').each(function (i) {
             if (i >= rules.length) {
                 return;
@@ -12699,11 +12703,17 @@ return jQuery;
         });
 
         function getColor() {
+
+            if (options.useColorInInputfield) {
+                return colorinput.val();
+            }
+
             if (manipulation === 'html') {
                 return $(target).first().attr(name);
             } else {
                 return $(target).first().css(name);
             }
+
         }
 
         function setColor(color) {
@@ -12786,7 +12796,11 @@ return jQuery;
     $('body').css('margin-bottom', '210px');
 
     loadRules();
-    panel.find('button').click();
+    panel.find('button').each(function () {
+        reloadColorPicker.call(this, {
+            useColorInInputfield: true
+        });
+    });
 
 }(window.jQuery));
         // colorizr.js end
