@@ -67,7 +67,7 @@
 
     $('head').append('<style type="text/css">/*:= css :*/</style>');
 
-    var panel = $('<div id="colorizr" class="clrz-panel clrz-reset">');
+    var panel = $('<div id="colorizr" class="clrz-panel clrz-dont-colorize clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
         '<div class="clrz-title-title clrz-reset">For better recollection</div>' +
         '<div class="clrz-title-target clrz-reset">HTML Element Selector (jQuery style)</div>' +
@@ -123,7 +123,7 @@
                 return $('');
             }
 
-            var targetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + target;
+            var targetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + target;
             return $(targetWithoutColorizrPanel);
         }
 
@@ -171,6 +171,7 @@
             showInitial: true,
             preferredFormat: "hex",
             localStorageKey: "colorizr.colors",
+            containerClassName: 'clrz-dont-colorize',
             change: function () {
                 setColor();
                 storeRules();
@@ -192,7 +193,7 @@
         /*jshint validthis:true */
         var newTarget = $(this).val();
         if (newTarget !== '') {
-            var newTargetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + newTarget;
+            var newTargetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + newTarget;
             $(newTargetWithoutColorizrPanel).css('outline', '2px dashed red');
             lastTarget = newTarget;
         }
@@ -200,7 +201,7 @@
 
     function unfocusTarget() {
         if (lastTarget !== null) {
-            var lastTargetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + lastTarget;
+            var lastTargetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + lastTarget;
             $(lastTargetWithoutColorizrPanel).css('outline', 'none');
             lastTarget = null;
         }
