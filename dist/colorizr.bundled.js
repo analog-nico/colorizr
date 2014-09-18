@@ -12718,10 +12718,17 @@ return jQuery;
 
         function setColor(color) {
             // $(target) is not cached since page might dynamically create new matching elements.
+
+            if (target === '') {
+                return;
+            }
+
+            var targetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + target;
+
             if (manipulation === 'html') {
-                $(target).attr(name, color);
+                $(targetWithoutColorizrPanel).attr(name, color);
             } else {
-                $(target).css(name, color);
+                $(targetWithoutColorizrPanel).css(name, color);
             }
         }
 
@@ -12763,14 +12770,16 @@ return jQuery;
         /*jshint validthis:true */
         var newTarget = $(this).val();
         if (newTarget !== '') {
-            $(newTarget).css('outline', '2px dashed red');
+            var newTargetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + newTarget;
+            $(newTargetWithoutColorizrPanel).css('outline', '2px dashed red');
             lastTarget = newTarget;
         }
     }
 
     function unfocusTarget() {
         if (lastTarget !== null) {
-            $(lastTarget).css('outline', 'none');
+            var lastTargetWithoutColorizrPanel = 'body > *:not(#colorizr) ' + lastTarget;
+            $(lastTargetWithoutColorizrPanel).css('outline', 'none');
             lastTarget = null;
         }
     }
