@@ -12840,21 +12840,6 @@ return jQuery;
             'data-name': name
         });
 
-        function getTargetElements() {
-            // $(target) is not cached since page might dynamically create new matching elements.
-
-            if (target === '') {
-                return $('');
-            }
-
-            var targetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + target;
-            return $(targetWithoutColorizrPanel);
-        }
-
-        function foundTargetElements() {
-            return getTargetElements().length > 0;
-        }
-
         function getColor() {
 
             if (options.useColorInInputfield) {
@@ -12871,9 +12856,9 @@ return jQuery;
 
         function setColor(color) {
             if (manipulation === 'html') {
-                getTargetElements().attr(name, color);
+                getTargetElements(target).attr(name, color);
             } else {
-                getTargetElements().css(name, color);
+                getTargetElements(target).css(name, color);
             }
         }
 
@@ -12905,7 +12890,7 @@ return jQuery;
             hide: setColor
         });
         colorinput.spectrum('set', getColor());
-        colorinput.spectrum((foundTargetElements() ? 'enable' : 'disable'));
+        colorinput.spectrum((getTargetElements(target).length > 0) ? 'enable' : 'disable');
 
         if (!options.keepSaveDisabled) {
             enableSave();
@@ -12919,18 +12904,26 @@ return jQuery;
 
     }
 
+    function getTargetElements(target) {
+        // $(target) is not cached since page might dynamically create new matching elements.
+
+        if (target === '') {
+            return $('');
+        }
+
+        var targetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + target;
+        return $(targetWithoutColorizrPanel);
+    }
+
     var lastTargetElements = null;
 
     function focusTarget() {
         unfocusTarget();
         /*jshint validthis:true */
         var newTarget = $(this).val();
-        if (newTarget !== '') {
-            var newTargetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + newTarget;
-            var newTargetElements = $(newTargetWithoutColorizrPanel);
-            newTargetElements.css('outline', '2px dashed red');
-            lastTargetElements = newTargetElements;
-        }
+        var newTargetElements = getTargetElements(newTarget);
+        newTargetElements.css('outline', '2px dashed red');
+        lastTargetElements = newTargetElements;
     }
 
     function unfocusTarget() {
