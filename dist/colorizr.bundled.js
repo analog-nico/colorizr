@@ -12911,8 +12911,14 @@ return jQuery;
             return $('');
         }
 
-        var targetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + target;
-        return $(targetWithoutColorizrPanel);
+        return $(target).filter(function () {
+            if ($(this).hasClass('clrz-dont-colorize')) {
+                return false;
+            }
+            return $(this).parents().filter(function () {
+                return $(this).hasClass('clrz-dont-colorize');
+            }).length === 0;
+        });
     }
 
     var lastTargetElements = null;
