@@ -334,7 +334,7 @@
 
     }
 
-    var lastTarget = null;
+    var lastTargetElements = null;
 
     function focusTarget() {
         unfocusTarget();
@@ -342,16 +342,16 @@
         var newTarget = $(this).val();
         if (newTarget !== '') {
             var newTargetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + newTarget;
-            $(newTargetWithoutColorizrPanel).css('outline', '2px dashed red');
-            lastTarget = newTarget;
+            var newTargetElements = $(newTargetWithoutColorizrPanel);
+            newTargetElements.css('outline', '2px dashed red');
+            lastTargetElements = newTargetElements;
         }
     }
 
     function unfocusTarget() {
-        if (lastTarget !== null) {
-            var lastTargetWithoutColorizrPanel = 'body > *:not(.clrz-dont-colorize) ' + lastTarget;
-            $(lastTargetWithoutColorizrPanel).css('outline', 'none');
-            lastTarget = null;
+        if (lastTargetElements !== null) {
+            lastTargetElements.css('outline', 'none');
+            lastTargetElements = null;
         }
     }
 
