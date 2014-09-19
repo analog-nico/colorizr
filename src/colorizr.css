@@ -246,3 +246,12 @@
     display: block !important;
     border-bottom: 1px solid white !important;
 }
+
+#colorizr:after {
+    content: 'Colorizr.js' !important;
+    position: absolute !important;
+    top: 7px !important;
+    right: 07px !important;
+    color: #aaa !important;
+    font-weight: bold !important;
+}
