@@ -12954,6 +12954,9 @@ return jQuery;
 
         widget.find('.clrz-apply').click(reloadColorPicker).click();
 
+        widget.find('.clrz-title')
+            .keyup(enableSave);
+
         widget.find('.clrz-target')
             .focusin(focusTarget)
             .keyup(focusTarget)
