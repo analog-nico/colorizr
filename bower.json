@@ -2,10 +2,15 @@
   "name": "colorizr.js",
   "version": "0.1.0",
   "authors": [
-    "Nicolai Kamenzky <nicolai.kamenzky@testrails.org>"
+    "Nicolai Kamenzky (https://github.com/analog-nico)"
   ],
   "description": "Coloring your webpage with instant feedback",
-  "main": "src/index.js",
+  "homepage": "http://analog-nico.github.io/colorizr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/analog-nico/colorizr.git"
+  },
+  "main": "dist/colorizr.js",
   "keywords": [
     "coloring",
     "design",
@@ -16,8 +21,7 @@
   "license": "ISC",
   "ignore": [
     "node_modules",
-    "bower_components",
-    "test"
+    "bower_components"
   ],
   "devDependencies": {
     "jquery": "^1.11.1",

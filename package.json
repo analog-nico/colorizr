@@ -2,7 +2,7 @@
   "name": "colorizr.js",
   "version": "0.1.0",
   "description": "Coloring your webpage with instant feedback",
-  "main": "src/index.js",
+  "main": "dist/colorizr.js",
   "scripts": {
     "test": "gulp build"
   },
@@ -13,7 +13,7 @@
     "color",
     "picker"
   ],
-  "author": "Nicolai Kamenzky <nicolai.kamenzky@testrails.org>",
+  "author": "Nicolai Kamenzky (https://github.com/analog-nico)",
   "license": "ISC",
   "private": true,
   "devDependencies": {
