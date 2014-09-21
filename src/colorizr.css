@@ -75,6 +75,10 @@
     display: inline-block !important;
 }
 
+#colorizr option.clrz-reset {
+    display: block !important;
+}
+
 #colorizr.clrz-panel {
     width: 100% !important;
     height: 210px !important;
