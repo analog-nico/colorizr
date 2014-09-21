@@ -1,5 +1,5 @@
 {
-  "name": "colorizr",
+  "name": "colorizr.js",
   "version": "0.1.0",
   "description": "Coloring your webpage with instant feedback",
   "main": "src/index.js",
