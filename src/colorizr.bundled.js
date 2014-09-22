@@ -26,16 +26,17 @@
         // colorizr.js end
     }
 
-    if (window.jQuery === undefined) {
-        loadJQuery();
-    }
+    var jQueryAlreadyPresent = window.jQuery !== undefined;
 
-    if (window.jQuery.fn.spectrum === undefined) {
-        loadSpectrum();
-    }
+    loadJQuery();
+    loadSpectrum();
 
     if (window.jQuery('#colorizr').length === 0) {
         loadColorizr();
+    }
+
+    if (jQueryAlreadyPresent) {
+        window.jQuery.noConflict(true); // Restore previous jQuery instance
     }
 
 })(window);
