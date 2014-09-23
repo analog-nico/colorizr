@@ -12790,9 +12790,9 @@ return jQuery;
     var panel = $('<div id="colorizr" class="clrz-panel clrz-dont-colorize clrz-reset">');
     panel.append($('<div class="clrz-header clrz-reset">' +
         '<div class="clrz-title-title clrz-reset">For better recollection</div>' +
-        '<div class="clrz-title-target clrz-reset">HTML Element Selector (jQuery style)</div>' +
+        '<div class="clrz-title-target clrz-reset">HTML Element Selector (as in CSS)</div>' +
         '<div class="clrz-title-manipulation clrz-reset">Manipulation of</div>' +
-        '<div class="clrz-title-name clrz-reset">Prop / Attrib Name</div>' +
+        '<div class="clrz-title-name clrz-reset">Prop / Attrib Name(s)</div>' +
         '<div id="clrz-palette" class="clrz-reset"></div>' +
         '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
@@ -12834,6 +12834,8 @@ return jQuery;
         var manipulation = widget.find('.clrz-manipulation').val();
         var name = widget.find('.clrz-name').val();
 
+        var nameList = name.split(/[\s,]+/);
+
         colorinput.attr({
             'data-target': target,
             'data-manipulation': manipulation,
@@ -12847,18 +12849,21 @@ return jQuery;
             }
 
             if (manipulation === 'html') {
-                return $(target).first().attr(name);
+                return $(target).first().attr(nameList[0]);
             } else {
-                return $(target).first().css(name);
+                return $(target).first().css(nameList[0]);
             }
 
         }
 
         function setColor(color) {
-            if (manipulation === 'html') {
-                getTargetElements(target).attr(name, color);
-            } else {
-                getTargetElements(target).css(name, color);
+            var targetElements = getTargetElements(target);
+            for ( var i = 0; i < nameList.length; i+=1 ) {
+                if (manipulation === 'html') {
+                    targetElements.attr(nameList[i], color);
+                } else {
+                    targetElements.css(nameList[i], color);
+                }
             }
         }
 
