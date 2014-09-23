@@ -203,6 +203,8 @@
     $('head').append('<style type="text/css">/*:= css :*/</style>');
 
     var panel = $('<div id="colorizr" class="clrz-panel clrz-dont-colorize clrz-reset">');
+    panel.append($('<div id="clrz-logo" class="clrz-reset">Colorizr.js</div>'));
+    panel.append($('<div id="clrz-vis-toggle" class="clrz-reset">'));
     panel.append($('<div class="clrz-header clrz-reset">' +
         '<div class="clrz-title-title clrz-reset">For better recollection</div>' +
         '<div class="clrz-title-target clrz-reset">HTML Element Selector (as in CSS)</div>' +
@@ -211,6 +213,17 @@
         '<div id="clrz-palette" class="clrz-reset"></div>' +
         '<div id="clrz-save" class="clrz-hide clrz-reset">Save</div>' +
         '</div>'));
+
+    panel.find('#clrz-vis-toggle').click(function () {
+        var colorizr = $('#colorizr');
+        if (colorizr.hasClass('clrz-minimized')) {
+            colorizr.removeClass('clrz-minimized');
+            $('body').css('margin-bottom', '210px');
+        } else {
+            colorizr.addClass('clrz-minimized');
+            $('body').css('margin-bottom', '30px');
+        }
+    });
 
     panel.find('#clrz-palette').click(showSavedPalettes);
     panel.find('#clrz-save').click(storeRules);
