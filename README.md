@@ -1,3 +1,5 @@
+**WARNING**: This repository is not maintained anymore.
+
 # Colorizr.js
 
 Head over to [http://analog-nico.github.io/colorizr/](http://analog-nico.github.io/colorizr/) to see how it helps you with coloring your webpage.
